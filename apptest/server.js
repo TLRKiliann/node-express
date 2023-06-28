@@ -1,7 +1,9 @@
 let http = require("http");
+/*
 let server = http.createServer(function(req, res, next) {
 	console.log("Requete reçue", req.url);
 });
+*/
 
 let createError = require("http-errors");
 let express = require("express");
@@ -15,8 +17,7 @@ let usersRouter = require("./routes/users");
 let app = express();
 
 app.set("views", path.join(__dirname, "views"));
-app.set("view-engine", "jade");
-
+app.set('view engine', 'pug');
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,5 +39,5 @@ app.use(function(req, res, next) {
 	res.render("error");
 });
 
-server.listen(3000);
+app.listen(3000);
 module.exports = app;
