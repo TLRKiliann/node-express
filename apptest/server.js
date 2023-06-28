@@ -4,7 +4,6 @@ let server = http.createServer(function(req, res, next) {
 	console.log("Requete reçue", req.url);
 });
 */
-
 let createError = require("http-errors");
 let express = require("express");
 let path = require("path");
@@ -39,5 +38,6 @@ app.use(function(req, res, next) {
 	res.render("error");
 });
 
+//server.listen(3000);
 app.listen(3000);
 module.exports = app;
