@@ -1,9 +1,14 @@
 let http = require("http");
+
 /*
 let server = http.createServer(function(req, res, next) {
 	console.log("Requete reçue", req.url);
+	res.setHeader("Content-type", "text/html; charset=uft-8");
+	res.write("<h1>The result of createServer(callback(req, res, next))</h1>");
+	res.end();
 });
 */
+
 let createError = require("http-errors");
 let express = require("express");
 let path = require("path");
@@ -11,7 +16,6 @@ let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 
 let indexRouter = require("./routes/index");
-let usersRouter = require("./routes/users");
 
 let app = express();
 
@@ -24,7 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 app.use(function(req, res, next) {
 	next(createError(404));
